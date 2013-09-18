@@ -1,0 +1,24 @@
+[Wed May 29 15:46:28 2013] [error] [client 127.0.0.1] PHP Warning:  implode() [<a href='function.implode'>function.implode</a>]: Invalid arguments passed in /Users/kandan/Desktop/cheekychinosV2/www/submit.php on line 104
+[Wed May 29 15:46:28 2013] [error] [client 127.0.0.1] PHP Stack trace:
+[Wed May 29 15:46:28 2013] [error] [client 127.0.0.1] PHP   1. {main}() /Users/kandan/Desktop/cheekychinosV2/www/submit.php:0
+[Wed May 29 15:46:28 2013] [error] [client 127.0.0.1] PHP   2. addOrder() /Users/kandan/Desktop/cheekychinosV2/www/submit.php:28
+[Wed May 29 15:46:28 2013] [error] [client 127.0.0.1] PHP   3. implode() /Users/kandan/Desktop/cheekychinosV2/www/submit.php:104
+[Wed May 29 15:46:28 2013] [error] [client 127.0.0.1] PHP Warning:  implode() [<a href='function.implode'>function.implode</a>]: Invalid arguments passed in /Users/kandan/Desktop/cheekychinosV2/www/submit.php on line 105
+[Wed May 29 15:46:28 2013] [error] [client 127.0.0.1] PHP Stack trace:
+[Wed May 29 15:46:28 2013] [error] [client 127.0.0.1] PHP   1. {main}() /Users/kandan/Desktop/cheekychinosV2/www/submit.php:0
+[Wed May 29 15:46:28 2013] [error] [client 127.0.0.1] PHP   2. addOrder() /Users/kandan/Desktop/cheekychinosV2/www/submit.php:28
+[Wed May 29 15:46:28 2013] [error] [client 127.0.0.1] PHP   3. implode() /Users/kandan/Desktop/cheekychinosV2/www/submit.php:105
+[Wed May 29 15:51:02 2013] [error] [client 127.0.0.1] PHP Notice:  Undefined variable: date in /Users/kandan/Desktop/cheekychinosV2/www/submit.php on line 107
+[Wed May 29 15:51:02 2013] [error] [client 127.0.0.1] PHP Stack trace:
+[Wed May 29 15:51:02 2013] [error] [client 127.0.0.1] PHP   1. {main}() /Users/kandan/Desktop/cheekychinosV2/www/submit.php:0
+[Wed May 29 15:51:02 2013] [error] [client 127.0.0.1] PHP   2. addOrder() /Users/kandan/Desktop/cheekychinosV2/www/submit.php:29
+[Wed May 29 15:52:09 2013] [error] [client 127.0.0.1] PHP Parse error:  syntax error, unexpected T_VARIABLE in /Users/kandan/Desktop/cheekychinosV2/www/submit.php on line 110
+[Wed May 29 15:52:24 2013] [error] [client 127.0.0.1] PHP Parse error:  syntax error, unexpected T_VARIABLE in /Users/kandan/Desktop/cheekychinosV2/www/submit.php on line 110
+[Wed May 29 15:52:26 2013] [error] [client 127.0.0.1] PHP Parse error:  syntax error, unexpected T_VARIABLE in /Users/kandan/Desktop/cheekychinosV2/www/submit.php on line 110
+[Wed May 29 15:52:54 2013] [error] [client 127.0.0.1] PHP Parse error:  syntax error, unexpected T_VARIABLE in /Users/kandan/Desktop/cheekychinosV2/www/submit.php on line 110
+[Wed May 29 15:52:56 2013] [error] [client 127.0.0.1] PHP Parse error:  syntax error, unexpected T_VARIABLE in /Users/kandan/Desktop/cheekychinosV2/www/submit.php on line 110
+[Wed May 29 15:52:56 2013] [error] [client 127.0.0.1] PHP Parse error:  syntax error, unexpected T_VARIABLE in /Users/kandan/Desktop/cheekychinosV2/www/submit.php on line 110
+[Wed May 29 15:52:56 2013] [error] [client 127.0.0.1] PHP Parse error:  syntax error, unexpected T_VARIABLE in /Users/kandan/Desktop/cheekychinosV2/www/submit.php on line 110
+[Wed May 29 15:53:07 2013] [error] [client 127.0.0.1] PHP Parse error:  syntax error, unexpected T_VARIABLE in /Users/kandan/Desktop/cheekychinosV2/www/submit.php on line 110
+[Wed May 29 15:53:26 2013] [error] [client 127.0.0.1] PHP Parse error:  syntax error, unexpected T_VARIABLE in /Users/kandan/Desktop/cheekychinosV2/www/submit.php on line 110
+[Wed May 29 15:53:29 2013] [error] [client 127.0.0.1] PHP Parse error:  syntax error, unexpected T_VARIABLE in /Users/kandan/Desktop/cheekychinosV2/www/submit.php on line 110

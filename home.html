@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0;" />
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="bootstrap/css/bootstrap.min.css">
+    <style type="text/css">
+        .well {min-width:65px;}
+        #inprogress .start, #inprogress .complete, #standby .pause, #paused .pause, #paused .complete,  #finished .pause, #finished .finish, #standby .complete, #standby .finish{display:none;}
+        /*#inprogress .start{}*/
+        #standby .finish{}
+        /*#finished .finished{display: none}*/
+    </style>
+    <script >
+
+        $( document ).ready(function() {
+           
+            var interval =     setInterval(function() {
+
+            $.getJSON("get.php",function(result){
+                $.each(result.users, function(i, user){
+
+                    // status 1 = paused;
+                    // status 2 = standby
+                    // status 3 = inprogress
+                    // status 4 = finished 
+                    // status 5 = completed (remove from register display)
+                    var pause_resume_text = "";
+                     if (user.status == 1) { 
+                            pause_resume_text = "Start";
+                        } else { 
+                            pause_resume_text = "<i class='icon-pause icon-white'></i>";
+                        }
+
+                    var start_resume_text = "";
+                    if (user.status == 2) { 
+                            start_resume_text = "Start";
+                        } else { 
+                            start_resume_text = "Resume";
+                        }
+
+
+                        // each child string needs to be style
+
+                    var childString = '<div data-status="'+user.status+'" data-code="user.code" data-id="'+user.id+'" class="well '+user.id+'"><h2>Name:<strong>'+user.name + '</strong></h2><p class="pause  clearfix btn btn-primary btn-large" onclick="pause('+user.id+')" >'+pause_resume_text+'</p><br><p class="start clearfix btn btn-success" onclick="start('+user.id+')" >'+start_resume_text+'</p><br><p class="finish clearfix btn btn-primary" onclick="finish('+user.id+')" >Finish</p><br><p class="complete clearfix btn btn-primary" onclick="complete('+user.id+')" ><i class="icon-eject icon-white"></i> End</p></div>';
+
+
+                        
+
+                        if($("#paused").children().hasClass(user.id) || $("#standby").children().hasClass(user.id) || $("#inprogress").children().hasClass(user.id) || $("#finished").children().hasClass(user.id)){
+
+                            if(user.status == 1 ){
+                                //$("#standby").append(childString);
+                                $('#paused').remove('.'+user.id);
+                            }
+
+                            if(user.status == 2 ){
+                                //$("#standby").append(childString);
+                                $('#paused').remove('.'+user.id);
+                            }
+                                     
+                        } else {
+                            if(user.status == 1 ){
+                                $("#paused").append(childString);
+
+                            }
+
+                            if(user.status == 2 ){
+                                $("#standby").append(childString);
+                            }
+
+                            if(user.status == 3 ){
+                                $("#inprogress").append(childString);
+                            }
+
+                            if(user.status == 4 ){
+                                $("#finished").append(childString);
+                            }
+
+
+                            
+                        }
+
+                        
+                    
+                });
+            });
+          
+    }, 2000);
+            
+        });
+
+
+        function pause(_id){
+            
+            var id = _id;
+
+            var pause = {
+                action:"pause",
+                id:id
+                }
+
+            $('div').remove('.'+id);
+            //console.log(child);
+
+              $.ajax({
+                  type: "post",
+                  url: "post.php",
+                    data: pause,
+                    dataType: "json",
+                   success: function(data){
+                    console.log("Success pause " + data);
+                },
+                   error: function(errMsg) {
+                    console.log("Error pause " + data);
+                    
+                }
+                });
+
+            
+        }
+
+        function start(_id){
+            
+            var id = _id;
+
+            var start = {
+                action:"start",
+                id:id
+                }
+
+            $('div').remove('.'+id);
+            //console.log(child);
+
+              $.ajax({
+                  type: "post",
+                  url: "post.php",
+                    data: start,
+                    dataType: "json",
+                   success: function(data){
+                    console.log("Success start " + data);
+                },
+                   error: function(errMsg) {
+                    console.log("Error start " + data);
+
+                    
+                }
+                });
+
+            
+        }
+
+        function finish(_id){
+
+            var id = _id;
+
+            var finish = {
+                action:"finish",
+                id:id
+                }
+
+            $('div').remove('.'+id);
+            
+
+              $.ajax({
+                  type: "post",
+                  url: "post.php",
+                    data: finish,
+                    dataType: "json",
+                   success: function(data){
+                    console.log("Success finish " + data);
+                },
+                   error: function(errMsg) {
+
+                   console.log("Error finish " + data);
+                    
+                }
+                });
+
+
+        }
+
+        function complete(_id){
+
+            var id = _id;
+            var complete = {
+                action:"complete",
+                id:id
+                }
+          $('div').remove('.'+id);
+
+          $.ajax({
+              type: "post",
+              url: "post.php",
+                data: complete,
+                dataType: "json",
+                success: function(data){
+                    console.log("Success complete " + data);
+                },
+                error: function(errMsg) {
+                    console.log("Error complete " + data);
+                }
+          });
+
+
+        }
+
+        function addCode(id, code){
+
+        }
+
+
+    </script>
+</head>
+<body>
+    <div class="row-fluid">
+        <div class="span3">
+            <h1>Paused</h1>
+            <div id="paused"></div>
+        </div>
+         <div class="span3">
+            <h1>Standby</h1>
+            <div id="standby"></div>
+         </div>
+         <div class="span3">
+            <h1>In progress</h1>
+            <div id="inprogress"></div>
+         </div>
+          <div class="span3">
+            <h1>Finished</h1>
+            <div id="finished"></div>
+         </div>
+    </div>
+</body>
+</html>
