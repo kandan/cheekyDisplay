@@ -18,10 +18,13 @@ function getUser($id) {
     global $dbconn;
     $users = array();
 
+    $yesterday = date('Y-m-d') . ' 00:00:00';
+
     if ($id != 0 ){
         $sql = "SELECT * FROM child WHERE id = $id";
     } else {
-        $sql = "SELECT * FROM child";
+        $sql = "SELECT * FROM child WHERE entered > '$yesterday'";
+        //echo $midnight;
     }
     //connect_db_web($_dbconn);
     $result = mysqli_query($dbconn, $sql);
@@ -49,7 +52,7 @@ function getUser($id) {
     echo json_encode($obj);
 
        // echo '<pre>' ;
-       // echo print_r($users);
+       //echo print_r($midnight);
        // echo '</pre>';
 
 }

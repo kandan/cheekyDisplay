@@ -53,12 +53,12 @@ include_once('includes/db.inc.php');
     }
                 
     /// send type of message
-    // 1. urgent
+    // 1. 2 mins remaining
     // 2. finished
-    // 3. ready
+    // 3. urgent
     
     //$parentNumber
-    //$ref_number 
+    //$ref_number
 
 
     function collectData($mobile_number, $parentName, $ref, $childName, $type){

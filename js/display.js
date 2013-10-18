@@ -14,10 +14,11 @@ if (isRemote) {
     
 } else {
     WEBURL = LOCALURL;
-
-
     isConnected = true;
     isPhoneGapReady = true;
+    //onDeviceReady();
+    // navigator.network.connection.type = 'wifi';
+
 }
 
 if (isTesting){
@@ -70,7 +71,7 @@ function getOrderDetails(order_id, callback){
                             childName = child.name;
                                                                                                             
                             });
-                            //console.log("getResults");
+                            
                             // printing docket
                             var printed = printOrder(orderID, parentName, parentMobile, childName, extraTime);
 
@@ -164,7 +165,7 @@ function printOrder(order_id, _parentName, _parentMobile, _childNames, _extraTim
     // echoValue += "Total                                  $"+totalzero+total.toFixed(2) +"\n\n";
     echoValue += "Please present this ticket to pay for your\nchild's play time and retain ticket to collect\nyour child.\n\n";
     echoValue += "Please remember you are responsible for your\nchild and must not leave CheekyChinos at\nany time.\n\n";
-    echoValue += "Thankyou, Love CheekyChinoss              \n\n\n\n\n\n";
+    echoValue += "Thankyou, Love CheekyChinos              \n\n\n\n\n\n";
     
     //console.log(echoValue);
     //closedModal = false;
@@ -907,6 +908,7 @@ function getChildInfo(_id, _finished) {
     var getTimer = setInterval (function(){
           var childrenPaused = $(".child.inprogress");
           var ref = "";
+          var message_sent = false;
         $.each(childrenPaused, function (i, kid) {
             var id = $(kid).data("id");
             var end = $(kid).data("endtime");
@@ -917,8 +919,8 @@ function getChildInfo(_id, _finished) {
                 notifyParent(id, 1, true);
             }
 
-            if (timeLeft < 0 ){
-                notifyParent(id, 1, true);
+            if (timeLeft <= 0 ){
+                notifyParent(id, 2, true);
                 finish(id);
             
             } else {
@@ -943,18 +945,6 @@ function getChildInfo(_id, _finished) {
     }
             $.modal(modelString, modaloptions);
     }
-
-    
-//     function closeModal(){
-//         console.log('test');
-// // close modal after 4 seconds
-// if (closedModal){
-//     closeTimer = setTimeout (function(){
-//         console.log("closed");
-//         $.modal.close();
-//     }, 4000);
-//     }
-// }
 
 var hideAllPopovers = function() {
        $('.popup-marker').each(function() {

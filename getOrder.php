@@ -28,8 +28,7 @@ function getOrder($id) {
             'times' => $values['times'],
             'date_entered' => $values['date_entered'],
             'date_modified' => $values['date_modified'],
-            'extra_time' => $values['extra_time']
-            
+            'extra_time' => $values['extra_time']        
         );
 }
         // get parent name
